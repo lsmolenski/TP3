@@ -63,6 +63,18 @@ int Passenger_setId(Passenger *this, int id) {
 	return retorno;
 }
 
+int Passenger_getId(Passenger* this, int* id){
+    int retorno=1;
+
+    if(this!=NULL && id!=NULL)
+    {
+        *id = this->id;
+        retorno=0;
+    }
+    return retorno;
+
+}
+
 int Passenger_setNombre(Passenger* this,char* nombre){
     int retorno=1;
 
@@ -105,7 +117,16 @@ int Passenger_setApellido(Passenger* this,char* apellido){
 }
 
 
-int Passenger_getApellido(Passenger* this,char* apellido);
+int Passenger_getApellido(Passenger* this,char* apellido){
+    int retorno=1;
+
+    if(this!=NULL && apellido!=NULL)
+    {
+        strcpy(apellido,this->apellido);
+        retorno=0;
+    }
+    return retorno;
+}
 
 int Passenger_setCodigoVuelo(Passenger* this,char* codigoVuelo){
 	int retorno=1;
@@ -136,7 +157,16 @@ int Passenger_setPrecio(Passenger* this,float precio){
 	return retorno;
 
 }
-int Passenger_getPrecio(Passenger* this,float* precio);
+int Passenger_getPrecio(Passenger* this,float* precio){
+	   int retorno=1;
+
+	    if(this!=NULL && precio!=NULL)
+	    {
+	        *precio = this->precio;
+	        retorno=0;
+	    }
+	    return retorno;
+}
 
 
 int Passenger_print(Passenger* this){
@@ -144,7 +174,7 @@ int Passenger_print(Passenger* this){
 
 	    if(this!=NULL)
 	    {
-	        printf(" %d    %20s    %20s   \n", this->id, this->nombre, this->apellido);
+	        printf(" %d    %20s %20s  Pasajero tipo: %s Vuelo: %s -  $%.2f   \n", this->id, this->nombre, this->apellido,  this->tipoPasajero, this->codigoVuelo, this->precio );
 	        retorno=0;
 	    }
 	    return retorno;

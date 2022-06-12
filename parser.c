@@ -58,14 +58,17 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 
 				auxPsg = Passenger_newParametros( idAux, name, lastName, flyCode, psgrType);
 				//convierto a numeros
-				getFinalFloat(priceAux, &priceFinal);
-				Passenger_setPrecio(auxPsg, priceFinal);
+				if (getFinalFloat(priceAux, &priceFinal)){
+					Passenger_setPrecio(auxPsg, priceFinal);
+				}
+
 
 				Passenger_print(auxPsg);
 
 //				printf("Id: %s - Nombre %s - %s\n", id, name, lastName);
-				ll_add(pArrayListPassenger, auxPsg);
-
+				if (ll_add(pArrayListPassenger, auxPsg)){
+					cantTotalRegistros++;
+				}
 
 			} else {
 				printf("Error lectura");
